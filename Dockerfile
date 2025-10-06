@@ -6,7 +6,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Stage 2: Create the final, smaller runtime image using a Java 21 JRE
-FROM eclipse-temurin:21-jre-focal
+FROM eclipse-temurin:21-jre-jammy
 WORKDIR /app
 COPY --from=build /app/target/email-writer-sb-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
